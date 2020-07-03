@@ -1,4 +1,4 @@
-﻿namespace ProgressImplementer
+﻿namespace ProgressImplementer.UI.Windows
 {
     /// <summary>
     /// Основное окно программы.
