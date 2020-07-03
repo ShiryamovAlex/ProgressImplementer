@@ -1,8 +1,9 @@
 ﻿namespace ProgressImplementer.UI.Commands
 {
     using System;
-    using System.Windows;
     using System.Windows.Input;
+
+    using ProgressImplementer.UI.Windows;
 
     /// <summary>
     /// Команда запуска окна с прогрессом.
@@ -28,8 +29,8 @@
         /// <param name="parameter">Входной параметр.</param>
         public void Execute(object parameter)
         {
-            // TODO: Запускать окно с прогрессом.
-            MessageBox.Show("Команда ещё не реализована");
+            var window = new ProgressWindow();
+            window.ShowDialog();
         }
     }
 }

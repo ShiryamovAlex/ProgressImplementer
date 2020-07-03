@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              Width="600" SizeToContent="Height" ResizeMode="NoResize"
-             WindowStartupLocation="CenterOwner"
+             WindowStartupLocation="CenterScreen"
              Title="Окно с прогрессом">
     <Grid>
         <Grid.RowDefinitions>
