@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressImplementer.UI", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressImplementer.BL", "ProgressImplementer.BL\ProgressImplementer.BL.csproj", "{F51962F3-76FB-4916-A00E-37A9FAEA59A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressImplementer.Tests", "ProgressImplementer.Tests\ProgressImplementer.Tests.csproj", "{5CB89165-D615-4A8D-B2A3-6B3A0B8C855E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F51962F3-76FB-4916-A00E-37A9FAEA59A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F51962F3-76FB-4916-A00E-37A9FAEA59A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F51962F3-76FB-4916-A00E-37A9FAEA59A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB89165-D615-4A8D-B2A3-6B3A0B8C855E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB89165-D615-4A8D-B2A3-6B3A0B8C855E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB89165-D615-4A8D-B2A3-6B3A0B8C855E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB89165-D615-4A8D-B2A3-6B3A0B8C855E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
