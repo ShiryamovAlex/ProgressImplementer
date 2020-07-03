@@ -89,5 +89,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProgressImplementer.BL\ProgressImplementer.BL.csproj">
+      <Project>{f51962f3-76fb-4916-a00e-37a9faea59a4}</Project>
+      <Name>ProgressImplementer.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProgressImplementer.UI\ProgressImplementer.UI.csproj">
+      <Project>{e6850437-11ec-4c31-83dd-fac7cbb4ce9b}</Project>
+      <Name>ProgressImplementer.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
