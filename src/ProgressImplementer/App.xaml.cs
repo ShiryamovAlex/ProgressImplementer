@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace ProgressImplementer
+﻿namespace ProgressImplementer
 {
+    using System.Windows;
+
+    using ProgressImplementer.UI.Windows;
+
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Приложение.
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
+        /// <summary>
+        /// Запустить основное окно.
+        /// </summary>
+        private void ShowMainWindow(object sender, StartupEventArgs e)
+        {
+            var mainWindow = new MainWindow();
+            mainWindow.ShowDialog();
+        }
     }
 }
