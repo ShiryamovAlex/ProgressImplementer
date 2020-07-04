@@ -1,30 +1,19 @@
 ﻿namespace ProgressImplementer.UI.Commands
 {
-    using System;
     using System.ComponentModel;
-    using System.Windows.Input;
 
     using ProgressImplementer.UI.ViewModels;
 
     /// <summary>
     /// Команда запуска прогресса.
     /// </summary>
-    public class StartProgressCommand : ICommand
+    public class StartProgressCommand : BaseCommand
     {
-        /// <inheritdoc cref="ICommand.CanExecute(object)"/>
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        /// <inheritdoc cref="ICommand.CanExecuteChanged"/>
-        public event EventHandler CanExecuteChanged;
-
         /// <summary>
         /// Запустить процесс прогресса.
         /// </summary>
         /// <param name="parameter">Входной параметр команды.</param>
-        public void Execute(object parameter)
+        public override void Execute(object parameter)
         {
             if (!(parameter is ProgressWindowVM progressWindowVM))
                 return;

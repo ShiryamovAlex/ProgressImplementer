@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="Interfaces\IProgressOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="ViewModels\ProgressBarVM.cs" />
     <Compile Include="ViewModels\ProgressWindowVM.cs" />

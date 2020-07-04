@@ -1,15 +1,12 @@
 ﻿namespace ProgressImplementer.UI.ViewModels
 {
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-
     using ProgressImplementer.UI.Commands;
     using ProgressImplementer.UI.Interfaces;
 
     /// <summary>
     /// Вью-модель окна с прогрессом.
     /// </summary>
-    public class ProgressWindowVM : INotifyPropertyChanged
+    public class ProgressWindowVM : BaseViewModel
     {
         /// <inheritdoc cref="InProgress"/>
         private bool _inProgress;
@@ -64,17 +61,5 @@
         /// Команда запуска прогресса.
         /// </summary>
         public StartProgressCommand StartProgressCommand { get; }
-
-        /// <inheritdoc cref="INotifyPropertyChanged.PropertyChanged"/>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Оповестить об изменении свойства.
-        /// </summary>
-        /// <param name="propertyName">Имя свойства</param>
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

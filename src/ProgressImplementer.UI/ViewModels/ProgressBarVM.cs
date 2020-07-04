@@ -1,12 +1,9 @@
 ﻿namespace ProgressImplementer.UI.ViewModels
 {
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-
     /// <summary>
     /// Вью-модель прогресса.
     /// </summary>
-    public class ProgressBarVM : INotifyPropertyChanged
+    public class ProgressBarVM : BaseViewModel
     {
         /// <inheritdoc cref="CurrentValue"/>
         private int _currentValue;
@@ -70,9 +67,6 @@
             }
         }
 
-        /// <inheritdoc cref="INotifyPropertyChanged.PropertyChanged"/>
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// Обнулить значения прогресса.
         /// </summary>
@@ -81,15 +75,6 @@
             CurrentValue = 0;
             Text = string.Empty;
             IsAborted = false;
-        }
-
-        /// <summary>
-        /// Оповестить об изменениях свойства.
-        /// </summary>
-        /// <param name="propertyName">Имя свойства.</param>
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
