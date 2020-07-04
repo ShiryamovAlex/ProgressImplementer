@@ -3,8 +3,6 @@
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
-    using ProgressImplementer.UI.Annotations;
-
     /// <summary>
     /// Вью-модель прогресса.
     /// </summary>
@@ -79,7 +77,6 @@
         /// Оповестить об изменениях свойства.
         /// </summary>
         /// <param name="propertyName">Имя свойства.</param>
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

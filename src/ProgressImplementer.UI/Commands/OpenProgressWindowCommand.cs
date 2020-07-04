@@ -30,7 +30,7 @@
         /// <param name="parameter">Входной параметр.</param>
         public void Execute(object parameter)
         {
-            var window = new ProgressWindow { DataContext = new ProgressWindowVM() };
+            var window = new ProgressWindow { DataContext = new ProgressWindowVM(null) };
             window.ShowDialog();
         }
     }

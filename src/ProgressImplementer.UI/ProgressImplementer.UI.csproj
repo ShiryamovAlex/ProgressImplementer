@@ -40,9 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\OpenProgressWindowCommand.cs" />
+    <Compile Include="Commands\StartProgressCommand.cs" />
     <Compile Include="Controls\ContentProgressBar.xaml.cs">
       <DependentUpon>ContentProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IProgressOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="ViewModels\ProgressBarVM.cs" />
