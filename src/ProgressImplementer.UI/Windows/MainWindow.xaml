@@ -3,11 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:ProgressImplementer.UI.ViewModels"
         mc:Ignorable="d"
         Width="300" SizeToContent="Height" ResizeMode="NoResize"
-        Title="Реализация прогресса">
+        Title="Реализация прогресса" WindowStartupLocation="CenterScreen"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainWindowVM, IsDesignTimeCreatable=False}"
+        >
     <StackPanel HorizontalAlignment="Center">
         <Label Content="Примеры окон с прогрессом:" Margin="5" HorizontalContentAlignment="Center" />
-        <Button Content="Запуск окна с прогрессом (XAML)" Margin="5" Padding="4,0,4,0" />
+        <Button Content="Запуск окна с прогрессом (XAML)" Margin="5" Padding="4,0,4,0" 
+                Command="{Binding OpenProgressWindowCommand}"/>
     </StackPanel>
 </Window>
