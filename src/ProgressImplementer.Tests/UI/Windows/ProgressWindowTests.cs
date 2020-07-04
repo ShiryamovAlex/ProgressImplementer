@@ -2,6 +2,7 @@
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    using ProgressImplementer.UI.ViewModels;
     using ProgressImplementer.UI.Windows;
 
     [TestClass]
@@ -15,7 +16,7 @@
         [Ignore("Тест с окном")]
         public void ShowWindowTest()
         {
-            var window = new ProgressWindow();
+            var window = new ProgressWindow { DataContext = new ProgressWindowVM() };
             window.ShowDialog();
         }
     }

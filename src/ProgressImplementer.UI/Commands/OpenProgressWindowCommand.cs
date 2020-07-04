@@ -3,6 +3,7 @@
     using System;
     using System.Windows.Input;
 
+    using ProgressImplementer.UI.ViewModels;
     using ProgressImplementer.UI.Windows;
 
     /// <summary>
@@ -29,7 +30,7 @@
         /// <param name="parameter">Входной параметр.</param>
         public void Execute(object parameter)
         {
-            var window = new ProgressWindow();
+            var window = new ProgressWindow { DataContext = new ProgressWindowVM() };
             window.ShowDialog();
         }
     }
