@@ -16,7 +16,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Content="Далее здесь будут какие-либо настройки прогресса" Margin="5" />
+        <GroupBox Header="Настройки прогресса" Margin="5">
+            <StackPanel>
+                <RadioButton Content="Вывод прогресса в процентах" />
+                <RadioButton Content="Вывод прогресса в долях" />
+            </StackPanel>
+        </GroupBox>
 
         <controls:ContentProgressBar Grid.Row="1" Margin="5" DataContext="{Binding ProgressBarVM}" />
 

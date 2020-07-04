@@ -1,5 +1,9 @@
 ﻿namespace ProgressImplementer.UI.ViewModels
 {
+    using System;
+
+    using ProgressImplementer.UI.Enums;
+
     /// <summary>
     /// Вью-модель прогресса.
     /// </summary>
@@ -33,6 +37,7 @@
             {
                 _currentValue = value;
                 OnPropertyChanged();
+                UpdateText();
             }
         }
 
@@ -55,6 +60,11 @@
         public int MaxValue { get; }
 
         /// <summary>
+        /// Режим вывода текста.
+        /// </summary>
+        public ProgressTextMode ProgressTextMode { get; set; }
+
+        /// <summary>
         /// Текст прогресса.
         /// </summary>
         public string Text
@@ -75,6 +85,26 @@
             CurrentValue = 0;
             Text = string.Empty;
             IsAborted = false;
+        }
+
+        /// <summary>
+        /// Обновить текст прогресса.
+        /// </summary>
+        private void UpdateText()
+        {
+            switch (ProgressTextMode)
+            {
+                case ProgressTextMode.Percent:
+                    Text = _currentValue == 0 ? string.Empty : $"{(int)((double)_currentValue / MaxValue * 100)}%";
+                    return;
+
+                case ProgressTextMode.Proportion:
+                    Text = _currentValue == 0 ? string.Empty : $"{_currentValue}/{MaxValue}";
+                    return;
+
+                default:
+                    throw new NotImplementedException($"Передан неопределённый тип перечисления {ProgressTextMode}");
+            }
         }
     }
 }
