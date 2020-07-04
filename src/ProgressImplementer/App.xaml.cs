@@ -2,6 +2,8 @@
 {
     using System.Windows;
 
+    using ProgressImplementer.Models;
+    using ProgressImplementer.UI.ViewModels;
     using ProgressImplementer.UI.Windows;
 
     /// <summary>
@@ -14,7 +16,10 @@
         /// </summary>
         private void ShowMainWindow(object sender, StartupEventArgs e)
         {
-            var mainWindow = new MainWindow();
+            var progressOperation = new ProgressOperation();
+            var mainWindowVM = new MainWindowVM(progressOperation);
+            var mainWindow = new MainWindow { DataContext = mainWindowVM };
+
             mainWindow.ShowDialog();
         }
     }

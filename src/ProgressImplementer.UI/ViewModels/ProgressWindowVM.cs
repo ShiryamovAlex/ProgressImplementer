@@ -19,7 +19,7 @@
         {
             ProgressOperation = progressOperation;
 
-            ProgressBarVM = new ProgressBarVM(1000);
+            ProgressBarVM = new ProgressBarVM();
             AbortProgressOperation = new AbortProgressOperation();
             StartProgressCommand = new StartProgressCommand();
         }

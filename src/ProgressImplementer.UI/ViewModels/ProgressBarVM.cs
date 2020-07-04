@@ -16,6 +16,9 @@
         /// <inheritdoc cref="IsAborted"/>
         private bool _isAborted;
 
+        /// <inheritdoc cref="MaxValue"/>
+        private int _maxValue;
+
         /// <inheritdoc cref="ProgressTextMode"/>
         private ProgressTextMode _progressTextMode;
 
@@ -25,10 +28,9 @@
         /// <summary>
         /// Вью-модель прогресса.
         /// </summary>
-        /// <param name="maxValue">Максимальное значение.</param>
-        public ProgressBarVM(int maxValue)
+        public ProgressBarVM()
         {
-            MaxValue = maxValue;
+            _maxValue = 100;
         }
 
         /// <summary>
@@ -66,7 +68,15 @@
         /// <summary>
         /// Максимальное значение прогресса.
         /// </summary>
-        public int MaxValue { get; }
+        public int MaxValue
+        {
+            get => _maxValue;
+            set
+            {
+                _maxValue = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Режим вывода текста.

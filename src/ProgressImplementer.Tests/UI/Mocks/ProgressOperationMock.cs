@@ -10,10 +10,13 @@
     /// </summary>
     internal class ProgressOperationMock : IProgressOperation
     {
+        private const int MAX_VALUE = 100;
+
         /// <inheritdoc cref="IProgressOperation.Execute(ProgressBarVM)"/>
         public void Execute(ProgressBarVM progressBarVM)
         {
-            for (var iteration = 0; iteration < progressBarVM.MaxValue; iteration++)
+            progressBarVM.MaxValue = MAX_VALUE;
+            for (var iteration = 0; iteration < MAX_VALUE; iteration++)
             {
                 while (progressBarVM.InPause)
                 {
