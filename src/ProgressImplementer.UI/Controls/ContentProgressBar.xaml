@@ -7,6 +7,17 @@
              mc:Ignorable="d" 
              Height="20"
              d:DataContext="{d:DesignInstance Type=viewModels:ProgressBarVM, IsDesignTimeCreatable=False}">
+
+    <UserControl.Resources>
+        <Style TargetType="ProgressBar">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsAborted}" Value="true">
+                    <Setter Property="Foreground" Value="DarkOrange" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <ProgressBar Height="20" Value="{Binding CurrentValue}" Minimum="0" Maximum="{Binding MaxValue}" />
         <TextBlock Height="20" Background="Transparent" TextAlignment="Center" VerticalAlignment="Center"
