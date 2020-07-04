@@ -29,18 +29,16 @@
             if (!(parameter is ProgressWindowVM progressWindowVM))
                 return;
 
-            progressWindowVM.IsEnabled = false;
+            progressWindowVM.InProgress = true;
             var progressBarVM = progressWindowVM.ProgressBarVM;
-
-            progressBarVM.CurrentValue = 0;
 
             var backgroundWorker = new BackgroundWorker { WorkerSupportsCancellation = true };
             backgroundWorker.DoWork += delegate { progressWindowVM.ProgressOperation.Execute(progressBarVM); };
 
             backgroundWorker.RunWorkerCompleted += delegate
             {
-                progressWindowVM.IsEnabled = true;
-                progressBarVM.CurrentValue = 0;
+                progressWindowVM.InProgress = false;
+                progressBarVM.Reset();
             };
 
             backgroundWorker.RunWorkerAsync();

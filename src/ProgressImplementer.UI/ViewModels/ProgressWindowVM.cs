@@ -11,8 +11,8 @@
     /// </summary>
     public class ProgressWindowVM : INotifyPropertyChanged
     {
-        /// <inheritdoc cref="IsEnabled"/>
-        private bool _isEnabled;
+        /// <inheritdoc cref="InProgress"/>
+        private bool _inProgress;
 
         /// <summary>
         /// Вью-модель окна с прогрессом.
@@ -20,25 +20,35 @@
         /// <param name="progressOperation">Операция с прогрессом.</param>
         public ProgressWindowVM(IProgressOperation progressOperation)
         {
-            _isEnabled = true;
             ProgressOperation = progressOperation;
 
             ProgressBarVM = new ProgressBarVM(1000);
+            AbortProgressOperation = new AbortProgressOperation();
             StartProgressCommand = new StartProgressCommand();
+        }
+
+        /// <summary>
+        /// Команда прерывания операции.
+        /// </summary>
+        public AbortProgressOperation AbortProgressOperation { get; }
+
+        /// <summary>
+        /// Флаг, что окно находится в состоянии прогресса.
+        /// </summary>
+        public bool InProgress
+        {
+            get => _inProgress;
+            set
+            {
+                _inProgress = value;
+                OnPropertyChanged(nameof(IsEnabled));
+            }
         }
 
         /// <summary> 
         /// Флаг доступности элементов окна.
         /// </summary>
-        public bool IsEnabled
-        {
-            get => _isEnabled;
-            set
-            {
-                _isEnabled = value;
-                OnPropertyChanged();
-            }
-        }
+        public bool IsEnabled => !InProgress;
 
         /// <summary>
         /// Вью-модель прогресса.

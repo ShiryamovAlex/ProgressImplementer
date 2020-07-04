@@ -39,8 +39,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\OpenProgressWindowCommand.cs" />
     <Compile Include="Commands\StartProgressCommand.cs" />
+    <Compile Include="Commands\AbortProgressOperation.cs" />
     <Compile Include="Controls\ContentProgressBar.xaml.cs">
       <DependentUpon>ContentProgressBar.xaml</DependentUpon>
     </Compile>

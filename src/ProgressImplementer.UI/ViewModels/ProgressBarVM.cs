@@ -74,6 +74,16 @@
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
+        /// Обнулить значения прогресса.
+        /// </summary>
+        public void Reset()
+        {
+            CurrentValue = 0;
+            Text = string.Empty;
+            IsAborted = false;
+        }
+
+        /// <summary>
         /// Оповестить об изменениях свойства.
         /// </summary>
         /// <param name="propertyName">Имя свойства.</param>
