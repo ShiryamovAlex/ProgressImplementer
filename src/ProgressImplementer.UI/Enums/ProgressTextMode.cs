@@ -6,6 +6,11 @@
     public enum ProgressTextMode
     {
         /// <summary>
+        /// Вывод не задан.
+        /// </summary>
+        None,
+
+        /// <summary>
         /// Вывод прогресса в процентах.
         /// </summary>
         Percent,

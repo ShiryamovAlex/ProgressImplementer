@@ -46,6 +46,7 @@
     <Compile Include="Controls\ContentProgressBar.xaml.cs">
       <DependentUpon>ContentProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\EnumBooleanConverter.cs" />
     <Compile Include="Enums\ProgressTextMode.cs" />
     <Compile Include="Interfaces\IProgressOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

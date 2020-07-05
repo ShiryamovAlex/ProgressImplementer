@@ -15,6 +15,9 @@
         /// <inheritdoc cref="IsAborted"/>
         private bool _isAborted;
 
+        /// <inheritdoc cref="ProgressTextMode"/>
+        private ProgressTextMode _progressTextMode;
+
         /// <inheritdoc cref="Text"/>
         private string _text;
 
@@ -37,7 +40,7 @@
             {
                 _currentValue = value;
                 OnPropertyChanged();
-                UpdateText();
+                Text = GetProgressText();
             }
         }
 
@@ -62,7 +65,15 @@
         /// <summary>
         /// Режим вывода текста.
         /// </summary>
-        public ProgressTextMode ProgressTextMode { get; set; }
+        public ProgressTextMode ProgressTextMode
+        {
+            get => _progressTextMode;
+            set
+            {
+                _progressTextMode = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Текст прогресса.
@@ -83,24 +94,26 @@
         public void Reset()
         {
             CurrentValue = 0;
-            Text = string.Empty;
+            Text = null;
             IsAborted = false;
         }
 
         /// <summary>
-        /// Обновить текст прогресса.
+        /// Получить значение текста прогресса.
         /// </summary>
-        private void UpdateText()
+        /// <returns>Текст прогресса в зависимости от режима вывода.</returns>
+        private string GetProgressText()
         {
             switch (ProgressTextMode)
             {
+                case ProgressTextMode.None:
+                    return null;
+
                 case ProgressTextMode.Percent:
-                    Text = _currentValue == 0 ? string.Empty : $"{(int)((double)_currentValue / MaxValue * 100)}%";
-                    return;
+                    return _currentValue == 0 ? string.Empty : $"{(int)((double)_currentValue / MaxValue * 100)}%";
 
                 case ProgressTextMode.Proportion:
-                    Text = _currentValue == 0 ? string.Empty : $"{_currentValue}/{MaxValue}";
-                    return;
+                    return _currentValue == 0 ? string.Empty : $"{_currentValue}/{MaxValue}";
 
                 default:
                     throw new NotImplementedException($"Передан неопределённый тип перечисления {ProgressTextMode}");
