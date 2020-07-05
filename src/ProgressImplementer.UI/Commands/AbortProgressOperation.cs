@@ -14,7 +14,7 @@
                 return;
 
             if (progressWindowVM.InProgress)
-                progressWindowVM.ProgressBarVM.IsAborted = true;
+                progressWindowVM.ProgressBarVM.Abort();
         }
     }
 }

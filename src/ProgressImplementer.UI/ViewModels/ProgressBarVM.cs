@@ -89,6 +89,15 @@
         }
 
         /// <summary>
+        /// Отменить прогресс.
+        /// </summary>
+        public void Abort()
+        {
+            IsAborted = true;
+            Text = "Прерывание операции";
+        }
+
+        /// <summary>
         /// Обнулить значения прогресса.
         /// </summary>
         public void Reset()
