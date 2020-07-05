@@ -15,6 +15,8 @@
 
             if (progressWindowVM.InProgress)
                 progressWindowVM.ProgressBarVM.Abort();
+            else
+                progressWindowVM.DialogResult = false;
         }
     }
 }
