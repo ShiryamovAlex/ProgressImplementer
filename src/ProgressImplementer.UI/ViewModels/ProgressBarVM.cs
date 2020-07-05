@@ -1,20 +1,23 @@
 ﻿namespace ProgressImplementer.UI.ViewModels
 {
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
+    using System;
+    using System.Windows;
 
-    using ProgressImplementer.UI.Annotations;
+    using ProgressImplementer.UI.Enums;
 
     /// <summary>
     /// Вью-модель прогресса.
     /// </summary>
-    public class ProgressBarVM : INotifyPropertyChanged
+    public class ProgressBarVM : BaseViewModel
     {
         /// <inheritdoc cref="CurrentValue"/>
         private int _currentValue;
 
         /// <inheritdoc cref="IsAborted"/>
         private bool _isAborted;
+
+        /// <inheritdoc cref="ProgressTextMode"/>
+        private ProgressTextMode _progressTextMode;
 
         /// <inheritdoc cref="Text"/>
         private string _text;
@@ -38,8 +41,14 @@
             {
                 _currentValue = value;
                 OnPropertyChanged();
+                Text = GetProgressText();
             }
         }
+
+        /// <summary>
+        /// Флаг, что операция приостановлена.
+        /// </summary>
+        public bool InPause { get; private set; }
 
         /// <summary>
         /// Флаг, что операция отменена пользователем.
@@ -60,6 +69,19 @@
         public int MaxValue { get; }
 
         /// <summary>
+        /// Режим вывода текста.
+        /// </summary>
+        public ProgressTextMode ProgressTextMode
+        {
+            get => _progressTextMode;
+            set
+            {
+                _progressTextMode = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
         /// Текст прогресса.
         /// </summary>
         public string Text
@@ -72,17 +94,54 @@
             }
         }
 
-        /// <inheritdoc cref="INotifyPropertyChanged.PropertyChanged"/>
-        public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Отменить прогресс.
+        /// </summary>
+        public void Abort()
+        {
+            InPause = true;
+            var needToAbort = MessageBox.Show("Вы действительно хотите прерывать операцию?", "Прерывание операции",
+                                  MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
+
+            InPause = false;
+
+            if (!needToAbort)
+                return;
+
+            IsAborted = true;
+            Text = "Прерывание операции";
+        }
 
         /// <summary>
-        /// Оповестить об изменениях свойства.
+        /// Обнулить значения прогресса.
         /// </summary>
-        /// <param name="propertyName">Имя свойства.</param>
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public void Reset()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            CurrentValue = 0;
+            Text = null;
+            IsAborted = false;
+        }
+
+        /// <summary>
+        /// Получить значение текста прогресса.
+        /// </summary>
+        /// <returns>Текст прогресса в зависимости от режима вывода.</returns>
+        private string GetProgressText()
+        {
+            switch (ProgressTextMode)
+            {
+                case ProgressTextMode.None:
+                    return null;
+
+                case ProgressTextMode.Percent:
+                    return _currentValue == 0 ? string.Empty : $"{(int)((double)_currentValue / MaxValue * 100)}%";
+
+                case ProgressTextMode.Proportion:
+                    return _currentValue == 0 ? string.Empty : $"{_currentValue}/{MaxValue}";
+
+                default:
+                    throw new NotImplementedException($"Передан неопределённый тип перечисления {ProgressTextMode}");
+            }
         }
     }
 }
