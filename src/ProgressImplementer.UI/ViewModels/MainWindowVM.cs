@@ -1,6 +1,7 @@
 ﻿namespace ProgressImplementer.UI.ViewModels
 {
     using ProgressImplementer.UI.Commands;
+    using ProgressImplementer.UI.Interfaces;
 
     /// <summary>
     /// Вью-модель основного окна.
@@ -10,9 +11,10 @@
         /// <summary>
         /// Вью-модель основного окна.
         /// </summary>
-        public MainWindowVM()
+        /// <param name="progressOperation">Операция с прогрессом.</param>
+        public MainWindowVM(IProgressOperation progressOperation)
         {
-            OpenProgressWindowCommand = new OpenProgressWindowCommand();
+            OpenProgressWindowCommand = new OpenProgressWindowCommand(progressOperation);
         }
 
         /// <summary>

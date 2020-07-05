@@ -8,6 +8,9 @@
     /// </summary>
     public class ProgressWindowVM : BaseViewModel
     {
+        /// <inheritdoc cref="DialogResult"/>
+        private bool? _dialogResult;
+
         /// <inheritdoc cref="InProgress"/>
         private bool _inProgress;
 
@@ -19,7 +22,7 @@
         {
             ProgressOperation = progressOperation;
 
-            ProgressBarVM = new ProgressBarVM(1000);
+            ProgressBarVM = new ProgressBarVM();
             AbortProgressOperation = new AbortProgressOperation();
             StartProgressCommand = new StartProgressCommand();
         }
@@ -28,6 +31,19 @@
         /// Команда прерывания операции.
         /// </summary>
         public AbortProgressOperation AbortProgressOperation { get; }
+
+        /// <summary>
+        /// Результат диалога окна.
+        /// </summary>
+        public bool? DialogResult
+        {
+            get => _dialogResult;
+            set
+            {
+                _dialogResult = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Флаг, что окно находится в состоянии прогресса.

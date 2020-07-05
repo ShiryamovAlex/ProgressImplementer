@@ -1,7 +1,5 @@
 ﻿namespace ProgressImplementer.UI.Windows
 {
-    using ProgressImplementer.UI.ViewModels;
-
     /// <summary>
     /// Основное окно программы.
     /// </summary>
@@ -13,7 +11,6 @@
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowVM();
         }
     }
 }
