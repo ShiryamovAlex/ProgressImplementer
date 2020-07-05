@@ -20,6 +20,11 @@
 
             for (var iteration = 0; iteration < progressBarVM.MaxValue; iteration++)
             {
+                while (progressBarVM.InPause)
+                {
+                    // Ожидаем отключение паузы.
+                }
+
                 if (progressBarVM.IsAborted)
                     return;
 
