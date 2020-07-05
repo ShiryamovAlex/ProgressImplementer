@@ -63,6 +63,7 @@
             this.OkButton.TabIndex = 0;
             this.OkButton.Text = "Ок";
             this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.StartProgress);
             // 
             // CancelButton
             // 
@@ -170,12 +171,12 @@
         private System.Windows.Forms.Panel BottomPanel;
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Integration.ElementHost ContentProgressBar;
-        private Controls.ContentProgressBar contentProgressBar1;
         private System.Windows.Forms.GroupBox SettingsGroupBox;
         private System.Windows.Forms.RadioButton ProportionRadioButton;
         private System.Windows.Forms.RadioButton PercentRadioButton;
         private System.Windows.Forms.RadioButton NoneRadioButton;
         private System.Windows.Forms.Panel TopPanel;
+        private System.Windows.Forms.Integration.ElementHost ContentProgressBar;
+        private Controls.ContentProgressBar contentProgressBar1;
     }
 }
