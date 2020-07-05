@@ -1,6 +1,7 @@
 ﻿namespace ProgressImplementer.UI.ViewModels
 {
     using System;
+    using System.Windows;
 
     using ProgressImplementer.UI.Enums;
 
@@ -43,6 +44,11 @@
                 Text = GetProgressText();
             }
         }
+
+        /// <summary>
+        /// Флаг, что операция приостановлена.
+        /// </summary>
+        public bool InPause { get; private set; }
 
         /// <summary>
         /// Флаг, что операция отменена пользователем.
@@ -93,6 +99,15 @@
         /// </summary>
         public void Abort()
         {
+            InPause = true;
+            var needToAbort = MessageBox.Show("Вы действительно хотите прерывать операцию?", "Прерывание операции",
+                                  MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
+
+            InPause = false;
+
+            if (!needToAbort)
+                return;
+
             IsAborted = true;
             Text = "Прерывание операции";
         }
