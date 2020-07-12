@@ -1,6 +1,6 @@
 ﻿namespace ProgressImplementer.UI.Commands
 {
-    using System.ComponentModel;
+    using System.Threading.Tasks;
 
     using ProgressImplementer.UI.ViewModels;
 
@@ -15,22 +15,23 @@
         /// <param name="parameter">Входной параметр команды.</param>
         public override void Execute(object parameter)
         {
-            if (!(parameter is ProgressWindowVM progressWindowVM))
-                return;
+            if (parameter is ProgressWindowVM progressWindowVM)
+                ExecuteAsync(progressWindowVM);
+        }
 
+        /// <summary>
+        /// Асинхронный запуск процесса.
+        /// </summary>
+        /// <param name="progressWindowVM">Вью-модель окна с прогрессом.</param>
+        public async void ExecuteAsync(ProgressWindowVM progressWindowVM)
+        {
             progressWindowVM.InProgress = true;
             var progressBarVM = progressWindowVM.ProgressBarVM;
 
-            var backgroundWorker = new BackgroundWorker { WorkerSupportsCancellation = true };
-            backgroundWorker.DoWork += delegate { progressWindowVM.ProgressOperation.Execute(progressBarVM); };
+            await Task.Run(() => progressWindowVM.ProgressOperation.Execute(progressBarVM));
 
-            backgroundWorker.RunWorkerCompleted += delegate
-            {
-                progressWindowVM.InProgress = false;
-                progressBarVM.Reset();
-            };
-
-            backgroundWorker.RunWorkerAsync();
+            progressWindowVM.InProgress = false;
+            progressBarVM.Reset();
         }
     }
 }
